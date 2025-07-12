@@ -19,17 +19,22 @@ def process_thought(thought: str):
     )
 
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-3.5-turbo",  # 👈 Changed from gpt-4
         messages=[
-            {"role": "system", "content": "You are a cognitive therapist helping people restructure negative thoughts using CBT."},
-            {"role": "user", "content": prompt}
+            {
+                "role": "system",
+                "content": "You are a cognitive therapist helping people restructure negative thoughts using CBT."
+            },
+            {
+                "role": "user",
+                "content": prompt
+            }
         ]
     )
 
     content = response.choices[0].message.content.strip()
     lines = content.split('\n')
 
-    # Fallbacks if missing
     distortion = ""
     response_text = ""
     conclusion = ""
