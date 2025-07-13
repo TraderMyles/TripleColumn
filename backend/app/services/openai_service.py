@@ -19,11 +19,16 @@ def process_thought(thought: str):
     )
 
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",  # 👈 Changed from gpt-4
+        model="gpt-3.5-turbo-0125",
         messages=[
             {
                 "role": "system",
-                "content": "You are a cognitive therapist helping people restructure negative thoughts using CBT."
+                "content": (
+                    "You are a compassionate, world-class cognitive behavioral therapist. "
+                    "You specialize in helping people identify negative thought patterns and reframe them into healthier, empowering perspectives. "
+                    "Your responses are empathetic, motivational, warm, and always supportive — like you're speaking to someone who's struggling but ready to grow. "
+                    "Use natural, conversational language while still being clear and therapeutic. Avoid robotic phrasing. Help the user feel safe, understood, and uplifted."
+                )
             },
             {
                 "role": "user",
